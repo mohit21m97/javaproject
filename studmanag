@@ -1,0 +1,66 @@
+import java.util.Scanner;
+import java.io.*;
+
+class Students {
+  String name;
+  int age;
+  String addr;
+  Long mobile;
+  
+
+  public Students getData() {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("------WELCOME TO DATABASE----");
+    System.out.print("Enter Your Name: ");
+    String name = sc.nextLine();
+
+    System.out.print("Enter Your Age: ");
+    int age = sc.nextInt();
+
+    System.out.print("Enter Your Address: ");
+    String addr = sc.next();
+
+    System.out.print("Enter Your contact number: ");
+    Long mobile = sc.nextLong();
+    if (String.valueOf(mobile).length() < 10) {
+      System.out.println("Invalid contact number");
+      System.exit(0);
+    }
+
+  
+
+    System.out.println("\n");
+    this.name = name;
+    this.addr = addr;
+    this.mobile = mobile;
+    this.age = age;
+    return this;
+  }
+
+  public void display() {
+
+    System.out.println("Name - " + name);
+    System.out.println("Address - " + addr);
+    System.out.println("Age -" + age);
+    System.out.println("Contact number - " + mobile);
+   
+  }
+}
+
+public class studmanag {
+  public static void main(String args[]) {
+    Students[] s1;
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Enter Number of students you want to add in a databaseStudents: ");
+    int num = sc.nextInt();
+    s1 = new Students[num];
+    for (int i = 0; i < num; i++) {
+      Students s = new Students();
+      s1[i] = s.getData();
+    }
+     for (int i = 0; i < s1.length; i++) {
+      s1[i].display();
+    }
+
+  }
+}
