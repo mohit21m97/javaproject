@@ -3,12 +3,17 @@ class StudentData
    private int stuID;
    private String stuName;
    private int stuAge;
+   // static variable 
+    static String cllgName; //->static
    StudentData()
    {
        //Default constructor
        stuID = 100;
-       stuName = "Mohit Singh";
+       stuName = "Rahul Singh";
        stuAge = 21;
+       // calling static method 
+       // without instantiating  class 
+       StudentData.setCllg("CHRIST (Deemed to be University), Bengaluru"); 
    }
    StudentData(int num1, String str, int num2)
    {
@@ -17,6 +22,10 @@ class StudentData
        stuName = str;
        stuAge = num2;
    }
+   // static method 
+    static void setCllg(String name){ 
+        cllgName = name ; 
+    }
    //Getter and setter methods
    public int getStuID() {
        return stuID;
@@ -36,20 +45,34 @@ class StudentData
    public void setStuAge(int stuAge) {
        this.stuAge = stuAge;
    }
+   
+   
+   
 
    public static void main(String args[])
    {
        //This object creation would call the default constructor
        StudentData myobj = new StudentData();
        System.out.println("Student Name is: "+myobj.getStuName());
+       //command line argumant
+       //       System.out.println("contact no: "+args[20]);  
+         
        System.out.println("Student Age is: "+myobj.getStuAge());
        System.out.println("Student ID is: "+myobj.getStuID());
+       
+       // calling static method 
+        // without instantiating class 
+        System.out.println("cllgName : " + cllgName); 
+ 
+        
 
        /*This object creation would call the parameterized
         * constructor StudentData(int, String, int)*/
        StudentData myobj2 = new StudentData(2047157, "MOHIT", 21);
-       System.out.println("My Name is: "+myobj2.getStuName());
-       System.out.println(" Age is: "+myobj2.getStuAge());
-       System.out.println("and ID is: "+myobj2.getStuID()); 
+       System.out.println("Student Name is: "+myobj2.getStuName());
+       System.out.println("Student Age is: "+myobj2.getStuAge());
+       System.out.println("Student ID is: "+myobj2.getStuID()); 
+
+        System.out.println("cllgName : " + cllgName); 
   }
 }
