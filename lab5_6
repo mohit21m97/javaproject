@@ -1,0 +1,80 @@
+class StudentData
+{
+   private int stuID;
+   private String stuName;
+   private int stuAge;
+   // static variable 
+    static String cllgName; //->static
+   StudentData()
+   {
+       //Default constructor
+       stuID = 2047157;
+       stuName = "Rahul Singh";
+       stuAge = 21;
+       // calling static method 
+       
+   }
+   StudentData(int num1, String str, int num2)
+   {
+       //Parameterized constructor
+       stuID = num1;
+       stuName = str;
+       stuAge = num2;
+   }
+   // static method 
+    static void setCllg(String name){ 
+        cllgName = name ; 
+    }
+   //Getter and setter methods
+   public int getStuID() {
+       return stuID;
+   }
+   public void setStuID(int stuID) {
+       this.stuID = stuID;
+   }
+   public String getStuName() {
+       return stuName;
+   }
+   public void setStuName(String stuName) {
+       this.stuName = stuName;
+   }
+   public int getStuAge() {
+       return stuAge;
+   }
+   public void setStuDOB(int stuAge) {
+       this.stuAge = stuAge;
+   }
+   
+   
+   
+
+   public static void main(String args[])
+   {
+       //This object creation would call the default constructor
+       StudentData myobj = new StudentData();
+       System.out.println("Student Name is: "+myobj.getStuName());
+       System.out.println("Student Application number is: "+myobj.getStuID());
+
+       //COMMAND LINE ARGUMENT 
+
+       System.out.println("Branch :"+args[0]);
+       System.out.println("Contact no. :"+args[1]);
+         
+       System.out.println("Student Age is: "+myobj.getStuAge());
+       
+        //STRING BUFFER CLASS
+        StringBuffer str = new StringBuffer("CHRIST Bengaluru");
+        String str1 =new String(str.toString());
+        int pos = str1.indexOf("Bengaluru");
+        str.insert(pos, "(Deemed to be University) ");
+        System.out.println(pos);
+        str.setCharAt(32,',');
+        System.out.println("cllgName:"+str);
+      
+        
+ 
+        
+
+
+  }
+}
