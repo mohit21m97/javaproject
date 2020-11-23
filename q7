@@ -1,0 +1,108 @@
+import java.util.Scanner;
+
+abstract class christ
+{
+	abstract void add_student();
+}
+class Studentdb extends christ
+{
+	Scanner sc = new Scanner(System.in);	
+	// final int g = 18;
+	final String g = "Christ";
+	void hello()
+	{
+		System.out.println("Super Class");
+	}
+	public int student_id[];
+	String name[];
+	//int qty[];
+	//int price[];
+	int i=0,num=0;
+
+	public void read()
+	{
+	System.out.println("\nEnter 1 for add Students");
+	System.out.println("Enter 0 to exit");
+		
+	int choice=sc.nextInt();
+			
+	switch(choice)
+	{
+	case 0:
+		System.exit(0);
+		break;
+	case 1:
+		add_student();
+		break;
+	default:
+		System.out.println("Wrong Choice!\n");
+		read();		
+	}
+	}
+	void add_student()
+	{
+		//System.out.println("You have entered one");
+		System.out.println("Enter the number of student you want to enter in db: ");
+		num=sc.nextInt()+1;
+		
+		student_id = new int[num];
+		name= new String[num];
+
+		
+		student_id[0] = 2047157;
+		name[0] = "MOHIT";
+
+		for(i = 1; i < num; i++)
+		{
+			System.out.println("");
+			System.out.printf("Enter Student Details  ");
+			System.out.println("");
+			System.out.println("Enter Student roll Code: ");
+			student_id[i]=sc.nextInt();
+			System.out.println("Enter Student Name: ");
+			name[i]=sc.next();
+			// System.out.println("Enter Product Quantity: ");
+			// qty[i]=sc.nextInt();
+			//System.out.println("Enter Price of Product: ");
+			//price[i]=sc.nextInt();	
+		}		
+	}
+	public void display()
+	{
+	System.out.println("student_Id	" + "Name	"+ "Collage Name" );
+	for(i = 1;i < num;i++)
+	{
+		System.out.println("---------------------------------------------");
+		System.out.println(student_id[i] + "		" + name[i] + "		" +g);
+	}
+	}
+
+	
+}
+class Report extends Studentdb
+{	
+	void hello()
+	{
+		System.out.println("\nDerived Class");
+	}
+	
+	void display1()
+	{	
+		System.out.println("\nS_Id	"  +  "Name		"  );	
+		System.out.println(student_id[0]+ "	" + name[0] + "	");
+		super.hello();
+		System.out.println("\n");		
+	}
+}
+class Stud
+{
+	public static void main(String args[])
+	{		
+		Report rep = new Report();
+		rep.add_student();
+		rep.display1();
+		rep.display();	
+		rep.hello();
+		
+	}
+}
