@@ -1,0 +1,143 @@
+//8 Implementing Package & Interface
+
+import java.util.*;		//user defined package
+
+import myPackage.MyClass;	//import 'MyClass' class from myPackage
+import myPackage1.Login;	//import 'Login' class from myPackage1
+
+
+interface age
+{
+	final int g = 21;
+	void display();
+}
+
+class Students implements age 	//class that implements the interface
+{
+	Scanner sc = new Scanner(System.in);	
+
+	public void read()
+	{
+	System.out.println("\nEnter 1 for adding student");
+	System.out.println("Enter 0 to exit");
+		
+	int choice=sc.nextInt();
+			
+	switch(choice)
+	{
+	case 0:
+		System.exit(0);
+		break;
+
+	case 1:
+		add_student();
+		break;
+
+	default:
+		System.out.println("Wrong Choice!\n");
+		read();		
+	}
+	}
+
+	public int product_id[];
+	public String name[];
+	//public int qty[];
+	public String branch[];
+	//public int price[];
+	int i=0;
+	int num=0;
+
+
+	public void add_student()
+	{
+		//System.out.println("You have entered one");
+		System.out.println("Enter the number of students you wants to enter: ");
+		num=sc.nextInt()+1;
+		
+		product_id = new int[num];
+		name= new String[num];
+		branch= new String[num];
+		//qty = new int[num];
+		//price = new int[num];
+		
+
+		product_id[0] = 1000;
+		name[0] = "Mohit";
+		branch[0] = "Msc ";
+		//price[0] = 850;
+
+		for(i = 1; i < num; i++)
+		{
+			System.out.println("");
+			System.out.printf("Enter product Details  ");
+			System.out.println("");
+
+			System.out.println("Enter Student_id: ");
+			product_id[i]=sc.nextInt();
+
+			System.out.println("Enter Student Name: ");
+			name[i]=sc.next();
+
+			System.out.println("Enter Branch: ");
+			branch[i]=sc.next();
+
+			//System.out.println("Enter Price of Product: ");
+			//price[i]=sc.nextInt();	
+		}		
+	}
+
+
+
+
+	public void display()		//Implementing the Interface
+	{
+	System.out.println("Product_Id	" + "Name	" + "      Branch	" + "      Age	" );
+	for(int i = 1;i < num;i++)
+	{
+		System.out.println("----------------------------------------------------------");
+
+		System.out.println(product_id[i] + "		" + name[i] + "		" + branch[i]+ "		"  );
+	}
+	}
+}
+
+class Student_data
+{
+	public static void main(String args[])
+	{	
+		Login ln = new Login();			//Creating an instance of class Login
+		ln.login();
+	
+		Students st = new Students();
+
+		MyClass obj = new MyClass();		//Creating an instance of class MyClass
+		obj.project_name();
+
+		st.add_student();
+		st.display();	
+
+		//-----------------------------------------------------
+	// 	try
+	// {
+	// 	Login ln = new Login();			//Creating an instance of class Login
+	// 	ln.login();
+	
+	// 	Stock st = new Stock();
+
+	// 	MyClass obj = new MyClass();		//Creating an instance of class MyClass
+	// 	obj.project_name();
+
+	// 	st.add_student();
+	// 	st.display();	
+	//  }
+	// catch (Exception e)
+	// {
+	// 	System.out.println("[" + e + "] Exception Occured");
+	// 	//sterUser();
+	// }
+	// finally
+	// {
+	// System.out.println("GoodBye");
+	// }
+	}
+}
