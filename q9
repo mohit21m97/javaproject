@@ -1,0 +1,201 @@
+//9 Implementing Exception Handling
+
+import java.util.*;		//user defined package
+
+import myyPackage.MyClass;	//import 'MyClass' class from myPackage
+import myyPackage1.Login;	//import 'Login' class from myPackage1
+
+
+
+interface collage
+{
+	final String g = "Christ";
+	void display();
+}
+
+class Stock implements collage 	//class that implements the interface
+{
+	Scanner sc = new Scanner(System.in);	
+
+
+	public void read()
+	{
+	System.out.println("\nEnter 1 for adding stock");
+	System.out.println("Enter 0 to exit");
+
+	int choice=sc.nextInt();
+
+	switch(choice)
+	{
+	case 0:
+		System.exit(0);
+		break;
+
+	case 1:
+		add_stock();
+		break;
+
+	default:
+		System.out.println("Wrong Choice!\n");
+		read();		
+	 }
+
+
+	}
+
+	public int student_id[];
+	public String name[];
+	public int age[];
+	public int price[];
+	int i=0;
+	int num=0;
+
+
+	public void add_stock()
+	{
+		//System.out.println("You have entered one");
+		System.out.println("Enter the number of students you wants to enter in db: ");
+		num=sc.nextInt()+1;
+
+		student_id = new int[num];
+		name= new String[num];
+		age = new int[num];
+		price = new int[num];
+
+
+		student_id[0] = 1000;
+		name[0] = "Keyboard";
+		age[0] = 77;
+		price[0] = 850;
+
+		for(i = 1; i < num; i++)
+		{
+			System.out.println("");
+			System.out.printf("Enter product Details  ");
+			System.out.println("");
+
+			System.out.println("Enter student_id: ");
+			student_id[i]=sc.nextInt();
+
+			System.out.println("Enter Student Name: ");
+			name[i]=sc.next();
+
+			System.out.println("Enter your age: ");
+			age[i]=sc.nextInt();
+
+			// System.out.println("Enter Price of Product: ");
+			// price[i]=sc.nextInt();	
+		}		
+	}
+
+
+
+
+	public void display()		//Implementing the Interface
+	{
+	System.out.println("Student_Id	" + "Name	" + "      Age	" );
+	for(int i = 1;i < num;i++)
+	{
+		System.out.println("------------------------------------------------");
+
+		System.out.println(student_id[i] + "		" + name[i] + "		"  + age[i] + "	" + g );
+	}
+	}
+}
+
+class studexc
+{
+	public static void main(String args[])
+	{	
+
+	try
+	{
+		Login ln = new Login();			//Creating an instance of class Login
+		ln.login();
+
+		Stock st = new Stock();
+
+		MyClass obj = new MyClass();		//Creating an instance of class MyClass
+		obj.project_name();
+
+		st.add_stock();
+		st.display();	
+	 }
+	catch (Exception e)
+	{
+		System.out.println("[" + e + "] Exception Occured");
+		//sterUser();
+	}
+	finally
+	{
+	System.out.println("GoodBye");
+	}
+
+	}
+}
+-----------------------------------packages-------------
+
+package myyPackage;
+
+public class MyClass
+{	
+	public void project_name()
+	{
+		System.out.println("Welcome to Student Management System");
+	}
+
+}
+------------------------------------------
+package myyPackage1;
+
+import java.util.*;
+
+class CustomException extends Exception		//userdefined exception
+{	 
+	public CustomException(String message)
+	{
+		super(message);		// call the constructor of parent Exception
+
+	  }
+}
+
+public class Login		//Class that uses above CustomException 
+{	
+	public void login()		//function login
+	{
+		Scanner sc = new Scanner(System.in);
+
+		try
+		{
+
+		String pass;
+		String user;
+
+		System.out.println("Enter user name: ");
+		user=sc.next();
+		System.out.println("Enter password: ");
+		pass =sc.next();
+
+		if(user.equals("root") && pass.equals("toor"))
+		{
+ 			System.out.println("Login Successfully ");
+		}
+		else
+		{
+			throw new CustomException("Wrong username and password!");		// Throw an object of user defined exception 
+
+		}
+		}
+		catch (CustomException e)
+		{
+			System.out.println("" + e + "Exception");		// Print the message from CustomException object
+			System.out.println("Enter 0 to exit and 1 to continue: ");
+			int ex = sc.nextInt();
+			if (ex == 0)
+				System.exit(0);
+			else
+				login();
+		}
+
+	}
+} 
